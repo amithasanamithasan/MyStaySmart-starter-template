@@ -5,8 +5,8 @@ import MenuDropdown from './MenuDropdown'
 
 const Navbar = () => {
   return (
-    <div className='fixed w-full bg-teal-300 z-10 opacity-9  shadow-md'>
-      <div className='py-4 border-b-[1px]'>
+    <div className='fixed w-full bg-teal-100 z-10 opacity-9  shadow-md'>
+      <div className='py-2 border-b-[1px]'>
         <Container>
           <div className='flex flex-row  items-center justify-between gap-3 md:gap-0'>
             {/* Logo */}
@@ -15,8 +15,8 @@ const Navbar = () => {
                 className='hidden md:block'
                 src={logoImg}
                 alt='logo'
-                width='100'
-                height='100'
+                width='60'
+                height='60'
               />
             </Link>
             {/* Dropdown Menu */}
