@@ -3,16 +3,19 @@ import RoomCard from "./RoomCard";
 import Container from "../Shared/Container";
 import { useSearchParams } from "react-router-dom";
 import Heading from "../Shared/Heading";
+import Loader from "../Shared/Loader";
 
 
 const Room = () => {
 const [rooms , setRooms]=useState([]);
+const [loading ,setLoading]=useState(false);
 const [params , setParams]=useSearchParams();
 // oonno je kono component e access korte parbo params.get kore 
   const category= params.get('category')
 // API data loaded
 
 useEffect( ()=>{
+    setLoading(true)
 fetch('rooms.json')
 
 .then(res=>res.json())
@@ -25,9 +28,14 @@ fetch('rooms.json')
     }else{
         setRooms(data)
     }
+    setLoading(false)
 })
 
 },[category])
+
+if(loading){
+    return <Loader></Loader>
+}
 
     return (
         <Container>
