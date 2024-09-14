@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom";
 import Loader from "../../components/Shared/Loader";
 import Container from "../../components/Shared/Container";
 import { Helmet } from "react-helmet-async";
+import Header from "../../components/RoomDetails/Header";
+import RoomInfo from "../../components/RoomDetails/RoomInfo";
+import RoomReservation from "./RoomReservation";
+
 
 
 
@@ -35,27 +39,20 @@ if(loading){
         <Helmet>
             <title>{room.title}</title>
         </Helmet>
-        <div  className="flex flex-col gap-3">
-            <div>
-                <h1  className="text-stone-950 md:font-semibold font-bold md:text-1xl text-3xl">{room?.title}</h1>
-                <p className="font-extralight text-2xl md:text-1xl text-teal-400">{room?.location}</p>
-             <div>
-             <img className="rounded-lg bg-gradient-to-r from-pink-400 via-red-400 to-yellow-400 p-1 " src={room?.image} alt="image"  />
-             </div>
-             <h1 className="font-serif p-2 font-bold md:text-2xl text-3xl">{room?.host?.name}</h1>
-             <div className="flex gap-3 p-2 font-bold text-amber-500">
-                <p> Guests-{room?.guests}</p>
-                <p> BedRooms-{room?.bedrooms}</p>
-                <p>BathRooms-{room?.bathrooms}</p>
-             </div>
-             <div className="w-1/2  flex flex-1 justify-evenly">
-                <p>{room?.description}</p>
-                <h1 className="  block mx-auto">${room?.price}</h1>
-             </div>
-            
-            </div>
+       <div className="max-w-screen-lg mx-auto">
+
+        <div className="flex flex-col gap-4"> 
+            <Header room={room}></Header>
         </div>
-       
+        <div className=" grid grid-cols-1 md:grid-cols-7 md:gap-10 mt-6">
+       <RoomInfo room={room}></RoomInfo>
+        
+<div className="md:col-span-3 order-first md:order-last mb-10">
+<RoomReservation></RoomReservation>
+ </div>
+
+   </div>
+   </div>
     
       </Container>
     );
