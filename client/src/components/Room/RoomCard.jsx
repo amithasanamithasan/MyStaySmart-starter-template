@@ -18,7 +18,12 @@ const RoomCard = ({room}) => {
             >
               <img
                 className='
-                    object-cover 
+                  
+              object-cover rounded-xl 
+               bg-gradient-to-r
+               from-zinc-800
+                via-pink-500
+                 to-blue-500 p-[2px]
                     h-full 
                     w-full 
                     group-hover:scale-110 

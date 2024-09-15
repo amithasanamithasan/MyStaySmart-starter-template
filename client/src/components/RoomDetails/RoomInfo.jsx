@@ -17,7 +17,7 @@ const RoomInfo = ({room}) => {
               <div className="lg:text-3xl md:text-2xl">Hosted by: {room?.host?.name}</div>
     
               <img
-                className='rounded-full border-[1px] py-2'
+                className='rounded-full  py-2'
                 height='50'
                 width='60'
                 alt='Avatar'

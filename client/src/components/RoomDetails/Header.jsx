@@ -11,7 +11,7 @@ const Header = ({room}) => {
             bg-gradient-to-r
              from-pink-500
               via-red-500
-               to-yellow-500 p-1 '
+               to-yellow-500 p-[3px] '
             src={room.image}
             alt='header image'
           />
