@@ -1,11 +1,12 @@
-import Calender from "./Calender";
+
+import DatePicker from "./DatePicker";
 
 
 
 const RoomReservation = () => {
     return (
         <div>
-        <Calender></Calender>
+        <DatePicker></DatePicker>
         </div>
     );
 };
