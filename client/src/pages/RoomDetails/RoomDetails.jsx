@@ -48,7 +48,7 @@ if(loading){
        <RoomInfo room={room}></RoomInfo>
         
 <div className="md:col-span-3 order-first md:order-last mb-10">
-<RoomReservation></RoomReservation>
+<RoomReservation room={room}></RoomReservation>
  </div>
 
    </div>
