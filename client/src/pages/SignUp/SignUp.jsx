@@ -15,8 +15,20 @@ const handelsignup= async event=>{
 
  const image= form.image.files[0];
 //  formData baniea image pathie te hobe 
- const imageDtata =await imageUploadimgbb(image)
-console.log(imageDtata);
+try{
+  // image upload
+  const imageData =await imageUploadimgbb(image)
+  // console.log(imageDtata);
+  // user registration
+  const result = await createUser(email,password)
+console.log(result);
+// save user name Profile photo
+  await updateUserProfile(name, imageData?.data?.display_url)
+// save user data in database
+}catch(err){
+  console.log(err);
+}
+
 //  console.log(name,email,password,image);
 }
 
