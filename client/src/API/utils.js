@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const imageUploadimgbb= async image=>{
 
+  // image uplodead new FromData ()
 const formData= new FormData();
   formData.append('image', image);
 

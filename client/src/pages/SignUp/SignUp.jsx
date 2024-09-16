@@ -1,10 +1,13 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 
 import { imageUploadimgbb } from '../../API/utils';
 import useAuth from"../../hooks/useAuth";
-import { saveUser } from '../../API/auth';
+import { getToken, saveUser } from '../../API/auth';
+
+import {toast} from 'react-hot-toast';
 const SignUp = () => {
+  const navigate = useNavigate()
   const { createUser, updateUserProfile, signInWithGoogle}=useAuth();
 
 const handelsignup= async event=>{
@@ -28,8 +31,17 @@ console.log(result);
 // save user data in database
 const dbResponse= await saveUser(result?.user)
 console.log(dbResponse);
+
+// get token
+await getToken(result?.user?.email)
+navigate('/');
+toast.success('SignUp Successful')
+
+
+
 }catch(err){
   console.log(err);
+  toast.error(err?.message);
 }
 
 //  console.log(name,email,password,image);
@@ -37,11 +49,11 @@ console.log(dbResponse);
 
 
   return (
-    <div className='flex justify-center items-center min-h-screen'>
-      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
+    <div className='flex justify-center items-center min-h-screen bg-green-200'>
+      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-black text-gray-900'>
         <div className='mb-8 text-center'>
-          <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
-          <p className='text-sm text-gray-400'>Welcome to StaySmart</p>
+          <h1 className='my-3 text-4xl font-bold text-white'>Sign Up</h1>
+          <p className='text-sm text-white'>Welcome to StaySmart</p>
         </div>
         <form onSubmit={handelsignup}
           noValidate=''
@@ -50,7 +62,7 @@ console.log(dbResponse);
         >
           <div className='space-y-4'>
             <div>
-              <label htmlFor='email' className='block mb-2 text-sm'>
+              <label htmlFor='email' className='block mb-2 text-sm text-white'>
                 Name
               </label>
               <input
@@ -63,10 +75,10 @@ console.log(dbResponse);
               />
             </div>
             <div>
-              <label htmlFor='image' className='block mb-2 text-sm'>
+              <label htmlFor='image' className='block mb-2 text-sm text-white'>
                 Select Image:
               </label>
-              <input
+              <input className='border-x-2 border-y-2 border-cyan-300 p-2 rounded-md'
                 required
                 type='file'
                 id='image'
@@ -75,7 +87,7 @@ console.log(dbResponse);
               />
             </div>
             <div>
-              <label htmlFor='email' className='block mb-2 text-sm'>
+              <label htmlFor='email' className='block mb-2 text-sm text-white'>
                 Email address
               </label>
               <input
@@ -90,7 +102,7 @@ console.log(dbResponse);
             </div>
             <div>
               <div className='flex justify-between'>
-                <label htmlFor='password' className='text-sm mb-2'>
+                <label htmlFor='password' className='text-sm mb-2 text-white'>
                   Password
                 </label>
               </div>
@@ -117,17 +129,17 @@ console.log(dbResponse);
         </form>
         <div className='flex items-center pt-4 space-x-1'>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
-          <p className='px-3 text-sm dark:text-gray-400'>
+          <p className='px-3 text-sm dark:text-gray-400 text-white' >
             Signup with social accounts
           </p>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
         </div>
-        <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
+        <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-blue-500 rounded-md cursor-pointer'>
           <FcGoogle size={32} />
 
-          <p>Continue with Google</p>
+          <p className='text-white '>Continue with Google</p>
         </div>
-        <p className='px-6 text-sm text-center text-gray-400'>
+        <p className='px-6 text-center text-white  text-base'>
           Already have an account?{' '}
           <Link
             to='/login'

@@ -12,26 +12,27 @@ const [loading ,setLoading]=useState(false);
 const [params , setParams]=useSearchParams();
 // oonno je kono component e access korte parbo params.get kore 
   const category= params.get('category')
+  console.log(category);
 // API data loaded
 
-useEffect( ()=>{
-    setLoading(true)
-fetch('rooms.json')
+// useEffect( ()=>{
+//     setLoading(true)
+// fetch('http://localhost:8000/rooms')
 
-.then(res=>res.json())
-.then(data=> {
-    if(category){
+// .then(res=>res.json())
+// .then(data=> {
+//     if(category){
 
-  const fillered= data.filter(room=> room.category=== category)
-  setRooms(fillered)
+//   const fillered= data.filter(room=> room.category=== category)
+//   setRooms(fillered)
 
-    }else{
-        setRooms(data)
-    }
-    setLoading(false)
-})
+//     }else{
+//         setRooms(data)
+//     }
+//     setLoading(false)
+// })
 
-},[category])
+// },[category])
 
 if(loading){
     return <Loader></Loader>
